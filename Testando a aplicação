@@ -1,0 +1,30 @@
+import java.time.LocalDate;
+
+public class Main {
+    public static void main(String[] args) {
+        Bootcamp bootcamp = new Bootcamp("Bootcamp Java", "Aprenda Java do básico ao avançado");
+
+        Curso curso1 = new Curso("Java Básico", "Introdução ao Java", 20);
+        Curso curso2 = new Curso("Java Avançado", "Tópicos avançados em Java", 30);
+        Mentoria mentoria = new Mentoria("Mentoria Java", "Dicas e truques de Java", LocalDate.now());
+
+        bootcamp.adicionarConteudo(curso1);
+        bootcamp.adicionarConteudo(curso2);
+        bootcamp.adicionarConteudo(mentoria);
+
+        Aluno aluno = new Aluno("Carlos Silva");
+        aluno.concluirCurso(curso1);
+
+        System.out.println("Bootcamp: " + bootcamp.getNome());
+        System.out.println("Descrição: " + bootcamp.getDescricao());
+        for (Conteudo conteudo : bootcamp.getConteudos()) {
+            conteudo.exibirInformacoes();
+        }
+
+        System.out.println("Aluno: " + aluno.getNome());
+        System.out.println("Cursos Concluídos: ");
+        for (Curso curso : aluno.getCursosConcluidos()) {
+            System.out.println("- " + curso.getTitulo());
+        }
+    }
+}
